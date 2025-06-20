@@ -1,0 +1,39 @@
+compute_environment: LOCAL_MACHINE         # 计算环境类型
+debug: false                              # 是否开启调试模式
+deepspeed_config:                         # DeepSpeed相关配置
+  bf16:                                   # bf16混合精度配置
+    enabled: true                         # 启用bf16
+  zero_optimization:                      # ZeRO优化器配置
+    stage: 1                              # ZeRO优化阶段
+    offload_optimizer:                    # 优化器offload配置
+      device: cpu                        # 优化器offload到CPU
+      pin_memory: true                   # 是否锁页内存
+    allgather_partitions: true            # 启用allgather分区
+    allgather_bucket_size: 5e8            # allgather桶大小
+    overlap_comm: true                    # 通信与计算重叠
+    reduce_scatter: true                  # 启用reduce scatter
+    reduce_bucket_size: 5e8               # reduce桶大小
+    contiguous_gradients: true            # 连续梯度存储
+  optimizer:                              # 优化器配置
+    type: AdamW                           # 优化器类型
+    params:                               # 优化器参数
+      lr: 2.5e-5                          # 学习率
+      weight_decay: 0.1                   # 权重衰减
+      eps: 1e-8                           # epsilon参数
+      betas: [0.9, 0.999]                 # beta参数
+  steps_per_print: 10                     # 日志打印步数
+  wall_clock_breakdown: false             # 是否输出wall clock分析
+distributed_type: DEEPSPEED               # 分布式类型
+downcast_bf16: 'no'                       # 是否降级为bf16
+machine_rank: 0                           # 当前机器编号
+main_training_function: main              # 主训练函数
+mixed_precision: bf16                     # 混合精度类型
+num_machines: 1                           # 机器数量
+num_processes: 8                          # 进程数量
+rdzv_backend: static                      # rendezvous后端
+same_network: true                        # 是否在同一网络
+tpu_env: []                               # TPU环境变量
+tpu_use_cluster: false                    # 是否使用TPU集群
+tpu_use_sudo: false                       # TPU是否使用sudo
+use_cpu: false                            # 是否使用CPU
+main_process_port: 20658

@@ -1,0 +1,22 @@
+compute_environment: LOCAL_MACHINE         # 计算环境类型
+debug: false                              # 是否开启调试模式
+deepspeed_config:                         # DeepSpeed相关配置
+  offload_optimizer_device: cpu           # 优化器offload到CPU
+  offload_param_device: cpu               # 参数offload到CPU
+  zero3_init_flag: false                  # 是否启用ZeRO-3初始化
+  zero_stage: 1                           # ZeRO优化阶段
+distributed_type: DEEPSPEED               # 分布式类型
+downcast_bf16: 'no'                       # 是否降级为bf16
+enable_cpu_affinity: false                # 是否启用CPU亲和性
+machine_rank: 0                           # 当前机器编号
+main_training_function: main              # 主训练函数
+mixed_precision: bf16                     # 混合精度类型
+num_machines: 1                           # 机器数量
+num_processes: 8                          # 进程数量
+rdzv_backend: static                      # rendezvous后端
+same_network: true                        # 是否在同一网络
+tpu_env: []                               # TPU环境变量
+tpu_use_cluster: false                    # 是否使用TPU集群
+tpu_use_sudo: false                       # TPU是否使用sudo
+use_cpu: false                            # 是否使用CPU
+main_process_port: 20658
