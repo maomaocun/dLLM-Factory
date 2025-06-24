@@ -4,3 +4,7 @@ dataset/
 *.pyc
 pretrained_models
 dataset
+
+*.egg-info
+__pycache__
+.gitignore
