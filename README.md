@@ -16,3 +16,12 @@ dLLM-Factory 是一个关于 dLLM（Diffusion Large Language Model）的完整�
 ```sh
 accelerate launch --config_file ./config/accelerate/lora_config.yaml  ./SFT_script/sft.py
 ```
+
+## Reinforcement Learning
+
+```sh
+cd dLLM-Factory
+bash examples/script/train_diffu_grpo.sh
+```
+
+> **Acknowledgments**: We thank [d1](https://github.com/dllm-reasoning/d1) for their excellent work. RL Codes are modified based on theirs.

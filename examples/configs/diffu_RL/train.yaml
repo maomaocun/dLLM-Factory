@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------
+# Modified from https://github.com/dllm-reasoning/d1/blob/main/diffu-grpo/slurm_scripts/train.yaml
 # ModelConfig
 torch_dtype: bfloat16
 load_in_4bit: false  # If true, lora will be used.

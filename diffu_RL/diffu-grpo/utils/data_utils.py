@@ -2,7 +2,7 @@
 
 from datasets import load_dataset, Dataset
 import pandas as pd
-from reward_func import extract_hash_answer
+from .reward_func import extract_hash_answer
 
 import random
 import numpy as np
@@ -69,7 +69,7 @@ def get_gsm8k_questions(split="train") -> Dataset:
     data = load_dataset("openai/gsm8k", "main")[split]
     return data.map(
         lambda x: {
-            "prompt_old": [
+            "prompt_old": [  # original prompt from d1
                 {"role": "user", "content": SYSTEM_PROMPT + "\n\n" + x["question"]},
             ],
             "prompt": [  # one-shot prompt

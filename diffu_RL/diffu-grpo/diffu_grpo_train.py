@@ -16,7 +16,7 @@ import json
 # Custom imports
 from diffu_grpo_trainer import DiffuGRPOTrainer
 from diffu_grpo_config import DiffuGRPOConfig
-from ..utils.reward_func import (
+from utils.reward_func import (
     xmlcount_reward_func,
     soft_format_reward_func,
     strict_format_reward_func,
@@ -28,7 +28,7 @@ from ..utils.reward_func import (
     boxed_and_answer_tags_format_reward,
     reward_len,
 )
-from ..utils.data_utils import (
+from utils.data_utils import (
     get_gsm8k_questions,
     get_countdown_questions,
     get_sudoku_questions,

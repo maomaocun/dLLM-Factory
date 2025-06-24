@@ -2,7 +2,7 @@
 
 import numpy as np
 import re
-from math500_utils import remove_boxed, last_boxed_only_string, is_equiv, boxed_in_answer
+from .math500_utils import remove_boxed, last_boxed_only_string, is_equiv, boxed_in_answer
 
 
 def extract_xml_answer(text: str) -> str:
