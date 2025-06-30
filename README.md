@@ -24,4 +24,4 @@ cd dLLM-Factory
 bash examples/script/train_diffu_grpo.sh
 ```
 
-> **Acknowledgments**: We thank [d1](https://github.com/dllm-reasoning/d1) for their excellent work. RL Codes are modified based on theirs.
+> **Acknowledgments**: We thank [d1](https://github.com/dllm-reasoning/d1),[dLLM-cache](https://github.com/maomaocun/dllm-cache)for their excellent work. RL Codes are modified based on theirs.
