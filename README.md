@@ -14,7 +14,7 @@ dLLM-Factory 是一个关于 dLLM（Diffusion Large Language Model）的完整�
 - **推理（Inference）**
 
 ```sh
-accelerate launch --config_file ./config/accelerate/lora_config.yaml  ./SFT_script/sft.py
+accelerate launch --config_file ./config/accelerate/lora_config.yaml  ./sft_script/sft.py
 ```
 
 ## Reinforcement Learning

@@ -30,18 +30,18 @@ def train_model(args, model,tokenizer,train_dataset,eval_dataset):
         num_train_epochs=args.num_epochs,
         per_device_train_batch_size=args.local_batch_size,
         gradient_accumulation_steps=args.grad_accum_steps,
-        evaluation_strategy="steps",
-        eval_steps=100,
-        logging_steps=10,
-        save_steps=100,
-        save_total_limit=20,
+        evaluation_strategy=args.evaluation_strategy,
+        eval_steps=args.eval_steps,
+        logging_steps=args.logging_steps,
+        save_steps=args.save_steps,
+        save_total_limit=args.save_total_limit,
         learning_rate=args.learning_rate,
-        load_best_model_at_end=True,
-        weight_decay=0.1,
-        max_grad_norm=1.0,
-        bf16=True,
-        report_to="none",
-        remove_unused_columns=False,
+        load_best_model_at_end=args.load_best_model_at_end,
+        weight_decay=args.weight_decay,
+        max_grad_norm=args.max_grad_norm,
+        bf16=args.bf16,
+        report_to=args.report_to,
+        remove_unused_columns=args.remove_unused_columns,
     )
     trainer = dLLMTrainer(
         model=model,
@@ -55,15 +55,16 @@ def train_model(args, model,tokenizer,train_dataset,eval_dataset):
     trainer.train()
 
 if __name__ == "__main__":
-    init_seed(42)
     parser = argparse.ArgumentParser(description="Configuration parser")
     parser.add_argument("--debug",dest="debug",action="store_true",help="debug mode")
     parser.add_argument("--enable_lora",default=True,help="enable lora")
     parser.add_argument("--train_config_path",type=str,default="./config/sft/default_config.yaml",help="Path to the Train YAML configuration file")
     parser.add_argument("--lora_config_path",type=str,default="./config/lora/default_config.yaml",help="Path to the Lora YAML configuration file")
+    parser.add_argument("--seed",type=int,default=42,help="Set random seed")
     args = parser.parse_args()
     args_processor = ArgsProcessor(args.train_config_path)
     args = args_processor.add_args_from_yaml(args)
+    init_seed(args.seed)
     model_loader = TransformerModelLoader(tokenizer_path=args.model_name,model_path=args.model_name)
     tokenizer, model = model_loader.load_model_tokenizer()
     if args.enable_lora:
