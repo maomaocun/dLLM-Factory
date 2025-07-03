@@ -1,27 +1,45 @@
 # dLLM-Factory
 
-dLLM-Factory 是一个关于 dLLM（Diffusion Large Language Model）的完整项目，涵盖了预训练（Pretrain）、监督微调（SFT）、强化学习（RL）以及推理（Inference）等核心模块的实现代码。
+**dLLM-Factory** is a comprehensive project focused on Diffusion Large Language Models (dLLMs). It provides a full suite of implementation code for core modules, including Pre-training, Supervised Fine-tuning (SFT), Reinforcement Learning (RL), and Inference.
 
-## 项目简介
+[](https://www.star-history.com/#maomaocun/dLLM-Factorye&Timeline)
 
-本项目旨在为研究者和开发者提供一个高效、易用的 dLLM 训练与推理平台，支持从数据预处理、模型训练到推理部署的全流程。项目结构清晰，便于二次开发和定制。
+-----
 
-## 主要功能
+## 📖 Project Introduction
 
-- **预训练（Pretrain）**
-- **监督微调（SFT）**
-- **强化学习（RL）**
-- **推理（Inference）**
+This project is designed to offer researchers and developers an efficient and user-friendly platform for dLLM training and inference. It supports the entire workflow, from data preprocessing and model training to inference and deployment. The project features a clear and organized structure, making it easy for users to undertake secondary development and customization.
+
+## ✨ Main Features
+
+  - **🧠 Pre-training (Pretrain):** Foundation model training from scratch.
+  - **🔧 Supervised Fine-tuning (SFT):** Adapting pre-trained models to specific tasks.
+  - **🤖 Reinforcement Learning (RL):** Further optimizing model performance using feedback.
+  - **🚀 Inference:** Efficiently running the trained models for real-world applications.
+
+## 🛠️ Usage
+
+### Supervised Fine-tuning (SFT)
+
+Execute the following command to start supervised fine-tuning:
 
 ```sh
-accelerate launch --config_file ./config/accelerate/lora_config.yaml  ./sft_script/sft.py
+accelerate launch --config_file ./config/accelerate/lora_config.yaml ./sft_script/sft.py
 ```
 
-## Reinforcement Learning
+### Reinforcement Learning (RL)
+
+To begin reinforcement learning, run the provided script:
 
 ```sh
-cd dLLM-Factory
 bash examples/script/train_diffu_grpo.sh
 ```
 
-> **Acknowledgments**: We thank [d1](https://github.com/dllm-reasoning/d1),for their excellent work. RL Codes are modified based on theirs.[dLLM-cache](https://github.com/maomaocun/dllm-cache) is added in our repo
+## 🙏 Acknowledgments
+
+We extend our sincere gratitude to the following projects for their excellent work. The Reinforcement Learning code in this repository is modified based on their contributions:
+
+  - **[d1](https://github.com/dllm-reasoning/d1):** A project focused on scaling reasoning in Diffusion Large Language Models via Reinforcement Learning.
+  - **[dLLM-cache](https://github.com/maomaocun/dllm-cache):** An implementation for accelerating dLLMs with adaptive caching, which has been integrated into our repository.
+
+## :star2: Star History
