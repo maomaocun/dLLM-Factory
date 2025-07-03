@@ -1,3 +1,7 @@
+好的，没问题！我已经将您的联系方式添加到了 README 中，并保持了原有的风格。
+
+-----
+
 # dLLM-Factory
 
 **dLLM-Factory** is a comprehensive project focused on Diffusion Large Language Models (dLLMs). It provides a full suite of implementation code for core modules, including Pre-training, Supervised Fine-tuning (SFT), Reinforcement Learning (RL), and Inference.
@@ -42,4 +46,9 @@ We extend our sincere gratitude to the following projects for their excellent wo
   - **[d1](https://github.com/dllm-reasoning/d1):** A project focused on scaling reasoning in Diffusion Large Language Models via Reinforcement Learning.
   - **[dLLM-cache](https://github.com/maomaocun/dllm-cache):** An implementation for accelerating dLLMs with adaptive caching, which has been integrated into our repository.
 
+## 📧 Contact
+
+For any questions or collaboration inquiries, feel free to reach out at: [yangyicun187@gmail.com](mailto:yangyicun187@gmail.com)
+
 ## :star2: Star History
+[![Star History Chart](https://api.star-history.com/svg?repos=maomaocun/dLLM-Factory&type=Timeline)](https://www.star-history.com/#maomaocun/dLLM-Factorye&Timeline)
