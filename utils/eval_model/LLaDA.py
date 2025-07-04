@@ -48,6 +48,7 @@ T = TypeVar("T", bound="LM")
 
 import torch
 from ..dllm_cache.cache import dLLMCache
+from ..sampling import generate_slow_fast_sampling
 import torch.nn.functional as F
 import numpy as np
 
@@ -247,6 +248,7 @@ class LLaDA(TemplateLM):
         remasking: str = "low_confidence",
         mask_id: int = 126336,
         is_check_greedy : bool =True,
+        is_slow_fast_sampling: bool = False,
         **kwargs,
     ) -> None:
         super().__init__()
@@ -261,6 +263,7 @@ class LLaDA(TemplateLM):
         self.is_check_greedy = is_check_greedy
         self.add_bos_token = add_bos_token
         self.escape_until = escape_until
+        self.is_slow_fast_sampling = is_slow_fast_sampling
         if not isinstance(pretrained, str):
             eval_logger.warning(
                 "`pretrained` model kwarg is not of type `str`. Many other model arguments may be ignored. Please do not launch via accelerate or use `parallelize=True` if passing an existing model this way."
@@ -953,18 +956,45 @@ class LLaDA(TemplateLM):
                 contexts,        
                 truncation=self.truncation,
             )
-            out = generate(
-                input_ids=context_enc,
-                batch_fewshots_id = batch_fewshots_id,
-                batch_question_id = batch_question_id,
-                attention_mask=attn_masks,
-                model=self.model,
-                steps=gen_kwargs.get("steps"),
-                gen_length=gen_kwargs.get("gen_length"),
-                block_length=gen_kwargs.get("block_length"),
-                cfg_scale=gen_kwargs.get("cfg_scale"),
-                remasking=gen_kwargs.get("remasking",None) if gen_kwargs.get("remasking",None) else "low_confidence"
-            )
+            # out = generate(
+            #     input_ids=context_enc,
+            #     batch_fewshots_id = batch_fewshots_id,
+            #     batch_question_id = batch_question_id,
+            #     attention_mask=attn_masks,
+            #     model=self.model,
+            #     steps=gen_kwargs.get("steps"),
+            #     gen_length=gen_kwargs.get("gen_length"),
+            #     block_length=gen_kwargs.get("block_length"),
+            #     cfg_scale=gen_kwargs.get("cfg_scale"),
+            #     remasking=gen_kwargs.get("remasking",None) if gen_kwargs.get("remasking",None) else "low_confidence"
+            # )
+
+            if self.is_slow_fast_sampling:
+                out, model_calls, avg_model_gen_length = generate_slow_fast_sampling(
+                    input_ids=context_enc,
+                    attention_mask=attn_masks,
+                    model=self.model,
+                    gen_length=min(gen_kwargs.get("gen_length"),gen_kwargs.get("max_gen_toks",1024)),
+                    block_length=gen_kwargs.get("block_length"),
+                    cfg_scale=gen_kwargs.get("cfg_scale"),
+                    k_exploration_steps=gen_kwargs.get("k_exploration_steps",6),
+                    cycle_len_confidence_threshold = gen_kwargs.get("cycle_len_confidence_threshold",0.3),
+                    high_confidence_threshold = gen_kwargs.get("high_confidence_threshold",0.9),
+                    cycle_length_stability_window = gen_kwargs.get("cycle_length_stability_window",2),
+                    cycle_length_stability_std_dev_threshold = gen_kwargs.get("cycle_length_stability_std_dev_threshold",1.0),
+                )
+            else:
+                out = generate(
+                    input_ids=context_enc,
+                    attention_mask=attn_masks,
+                    model=self.model,
+                    steps=gen_kwargs.get("steps"),
+                    gen_length=gen_kwargs.get("gen_length"),
+                    block_length=gen_kwargs.get("block_length"),
+                    cfg_scale=gen_kwargs.get("cfg_scale"),
+                    remasking=gen_kwargs.get("remasking",None) if gen_kwargs.get("remasking",None) else "low_confidence"
+                )
+            
             cont_toks_list = self.tokenizer.batch_decode(out, skip_special_tokens=True)
             for s in cont_toks_list:
                 if not self.escape_until:
