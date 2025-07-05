@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import numpy as np
 import torch
 from transformers.tokenization_utils import PaddingStrategy, TruncationStrategy
-from dllm_cache import FeatureCache
+from ..dllm_cache.cache import dLLMCache
 import torch.nn.functional as F
 import numpy as np
 
@@ -83,7 +83,7 @@ def generate_slow_fast_sampling(
         assert gen_length % block_length == 0, "gen_length must be divisible by block_length for this simplified block approach"
         num_blocks = gen_length // block_length
 
-        feature_cache = FeatureCache()
+        feature_cache =dLLMCache()
         feature_cache.reset_cache(prompt_length,gen_length=gen_length)
         
         total_model_calls = 0 # For tracking computation

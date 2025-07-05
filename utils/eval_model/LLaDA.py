@@ -104,7 +104,7 @@ def generate(
         steps_per_block = steps // num_blocks
 
         feature_cache = dLLMCache()
-        feature_cache.reset_cache(prompt_length)
+        feature_cache.reset_cache(prompt_length,gen_length)
         for num_block in range(num_blocks):
             start_idx = prompt_length + num_block * block_length
             end_idx = prompt_length + (num_block + 1) * block_length

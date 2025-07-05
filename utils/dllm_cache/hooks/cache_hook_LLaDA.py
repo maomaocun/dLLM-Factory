@@ -157,6 +157,7 @@ def cache_hook_feature(
     refresh_prompt = feature_cache.refresh_prompt(layer_id=self.layer_id)
     transfer_ratio = feature_cache.transfer_ratio
     bs, seq_len, dim = x.shape
+    feature_cache.expect_length=seq_len-prompt_length
     transfer = transfer_ratio > 0 and transfer_ratio <= 1
 
     def attention(q, k, v, q_index: torch.Tensor = None):
