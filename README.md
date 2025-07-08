@@ -14,11 +14,47 @@ This project is designed to offer researchers and developers an efficient and us
 
 ## ✨ Main Features
 
-  - **🧠 Pre-training (Pretrain):** Foundation model training from scratch.
-  - **🔧 Supervised Fine-tuning (SFT):** Adapting pre-trained models to specific tasks.
-  - **🤖 Reinforcement Learning (RL):** Further optimizing model performance using feedback.
-  - **🚀 Inference:** Efficiently running the trained models for real-world applications.
+- **🧠 Pre-training (Pretrain):** Foundation model training from scratch.
+  | Category | Supported |
+  | :--- | :--- |
+  | **Dataset** | `SlimPajama` |
 
+***
+
+- **🔧 Supervised Fine-tuning (SFT):** Adapting pre-trained models to specific tasks.
+  | Category | Supported |
+  | :--- | :--- |
+  | **Dataset** | `simplescaling-s1K` |
+
+***
+
+- **🤖 Reinforcement Learning (RL):** Further optimizing model performance using feedback.
+  | Category | Supported |
+  | :--- | :--- |
+  | **Method** | `diff-grpo` |
+
+***
+
+- **🚀 Inference:** Efficiently running the trained models for real-world applications.
+  | Category | Supported |
+  | :--- | :--- |
+  | **Acceleration**| `dLLM-cache` |
+
+***
+
+- **📈 Evaluation:** Comprehensive evaluation on various benchmarks.
+  | Benchmark | LLaDA Support | Dream Support |
+  | :--- | :---: | :---: |
+  | **BBH** | ✅ | ✅ |
+  | **GPQA** | ✅ | ✅ |
+  | **GSM8K** | ✅ | ✅ |
+  | **HumanEval** | ✅ | ✅ |
+  | **Long Bench** | ✅ | - |
+  | **MBPP** | ✅ | ✅ |
+  | **Minerva Math**| ✅ | ✅ |
+  | **MMLU** | ✅ | ✅ |
+  | **MMLU Pro** | ✅ | ✅ |
+  
 ## 🛠️ Usage
 
 ### Pretraining
@@ -35,6 +71,7 @@ bash run_pretrain.sh
 Execute the following command to start supervised fine-tuning:
 
 ```sh
+cd sft
 accelerate launch --config_file ./config/accelerate/lora_config.yaml ./sft_script/sft.py
 ```
 
@@ -43,6 +80,7 @@ accelerate launch --config_file ./config/accelerate/lora_config.yaml ./sft_scrip
 To begin reinforcement learning, run the provided script:
 
 ```sh
+cd rl
 bash examples/script/train_diffu_grpo.sh
 ```
 
@@ -52,7 +90,8 @@ bash examples/script/train_diffu_grpo.sh
 Get the evaluation results by this command:
 
 ```sh
-
+cd evaluation
+bash scripts/Dream/run_Dream_bbh_base.sh
 ```
 
 ## 🙏 Acknowledgments
