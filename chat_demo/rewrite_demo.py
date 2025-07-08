@@ -103,12 +103,12 @@ mask_id = 126336 # The ID for the mask token
 # --- Model Loading ---
 # Using a placeholder for the model path. 
 # You should replace this with the actual path to your fine-tuned model.
-MODEL_PATH = "/obs/pretrained_models/maomaocun/checkpoint/sft_save/full_param/llada-s1/checkpoint-950" # Placeholder
+MODEL_PATH = "GSAI-ML/LLaDA-8B-Base" # Placeholder
 
 print("Loading model and tokenizer...")
 # We recommend loading the model in a try-except block to handle potential errors
 try:
-    tokenizer = AutoTokenizer.from_pretrained("GSAI-ML/LLaDA-8B-Instruct", trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained("GSAI-ML/LLaDA-8B-Base", trust_remote_code=True)
     # Add a special token for masking if it doesn't exist.
     if "<|mdm_mask|>" not in tokenizer.special_tokens_map.values():
         tokenizer.add_special_tokens({'additional_special_tokens': ['<|mdm_mask|>']})
@@ -144,7 +144,7 @@ def process_mask(prompt, mask_counts):
         
     return processed_prompt
 
-def generate_response(prompt, mask_count, temperature=0.2):
+def generate_response(prompt, mask_count, temperature=0.0):
     """
     Main function to handle the generation process.
     Returns the final answer and a dictionary of all intermediate steps.
@@ -153,7 +153,6 @@ def generate_response(prompt, mask_count, temperature=0.2):
          return "Model not loaded.", {0: "Model not loaded."}
 
     processed_prompt = process_mask(prompt, mask_count)
-    print("Processed Prompt:", processed_prompt)
     
     input_ids = tokenizer(processed_prompt, return_tensors="pt").input_ids.to(device)
     attention_mask = torch.ones_like(input_ids)
@@ -171,7 +170,6 @@ def generate_response(prompt, mask_count, temperature=0.2):
     
     answer = tokenizer.batch_decode(generation_ids, skip_special_tokens=True)[0]
     elapsed_time = end_time - start_time
-    print(f"Generation took {elapsed_time:.2f} seconds.")
 
     return answer, x_t_text_step_dict
 
@@ -219,7 +217,7 @@ with gr.Blocks(title="LLaDA-8B-Instruct Demo", theme=gr.themes.Soft(primary_hue=
                 )
                 temperature = gr.Slider(
                     label="Temperature (creativity)",
-                    minimum=0.0, maximum=1.0, value=0.2, step=0.1
+                    minimum=0.0, maximum=1.0, value=0.0, step=0.1
                 )
             
             with gr.Row():
