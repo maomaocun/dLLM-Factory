@@ -21,6 +21,15 @@ This project is designed to offer researchers and developers an efficient and us
 
 ## 🛠️ Usage
 
+### Pretraining
+
+Execute the following command to start Pretraining:
+
+```sh
+cd pretrain
+bash run_pretrain.sh
+```
+
 ### Supervised Fine-tuning (SFT)
 
 Execute the following command to start supervised fine-tuning:
@@ -35,6 +44,15 @@ To begin reinforcement learning, run the provided script:
 
 ```sh
 bash examples/script/train_diffu_grpo.sh
+```
+
+
+### Evalution
+
+Get the evaluation results by this command:
+
+```sh
+
 ```
 
 ## 🙏 Acknowledgments
