@@ -72,7 +72,7 @@ Execute the following command to start supervised fine-tuning:
 
 ```sh
 cd sft
-accelerate launch --config_file ./config/accelerate/lora_config.yaml ./sft_script/sft.py
+accelerate launch --config_file ./config/accelerate/lora_config.yaml ./sft.py
 ```
 
 ### Reinforcement Learning (RL)

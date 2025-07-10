@@ -6,7 +6,7 @@ import os
 from data import dLLMSFTDataset,dLLMDataCollator,preprocess_dataset
 from trainer import dLLMTrainer
 from argsparser import ArgsProcessor
-from utils import init_seed,TransformerModelLoader,LoraBuilder
+from utils import TransformerModelLoader,LoraBuilder
 from datasets import load_dataset
 def load_data(args, tokenizer):
     if args.train_data.endswith('.json'):
@@ -61,11 +61,9 @@ if __name__ == "__main__":
     parser.add_argument("--enable_lora",default=True,help="enable lora")
     parser.add_argument("--train_config_path",type=str,default="./config/sft/default_config.yaml",help="Path to the Train YAML configuration file")
     parser.add_argument("--lora_config_path",type=str,default="./config/lora/default_config.yaml",help="Path to the Lora YAML configuration file")
-    parser.add_argument("--seed",type=int,default=42,help="Set random seed")
     args = parser.parse_args()
     args_processor = ArgsProcessor(args.train_config_path)
     args = args_processor.add_args_from_yaml(args)
-    init_seed(args.seed)
     model_loader = TransformerModelLoader(tokenizer_path=args.model_name,model_path=args.model_name)
     tokenizer, model = model_loader.load_model_tokenizer()
     if args.enable_lora:
