@@ -6,7 +6,7 @@
 
 ## 📖 Project Introduction
 
-This project aims to provide researchers and developers with an efficient, user-friendly platform for training and deploying dLLMs. It encompasses the full workflow, from data preprocessing and model training to inference and deployment, featuring a well-organized structure that facilitates secondary development and customization. Support for `Dream` and `LLaDA` is already included.
+This project **developed by SJTU and Shanghai AI Lab** aims to provide researchers and developers with an efficient, user-friendly platform for training and deploying dLLMs. It encompasses the full workflow, from data preprocessing and model training to inference and deployment, featuring a well-organized structure that facilitates secondary development and customization. Support for `Dream` and `LLaDA` is already included.
 
 ## ✨ Key Features
 
