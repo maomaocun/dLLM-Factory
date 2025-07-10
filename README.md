@@ -46,7 +46,16 @@ This project is designed to offer researchers and developers an efficient and us
   | **Minerva Math**| ✅ | ✅ |
   | **MMLU** | ✅ | ✅ |
   | **MMLU Pro** | ✅ | ✅ |
-  
+
+***
+
+## 📝 TODO
+
+- [ ] Expand dataset support for pretraining and SFT
+- [ ] Integrate more RL algorithms and strategies
+- [ ] Add more dLLM acceleration methods (e.g., quantization, pruning, etc.)
+- [ ] Add more evaluation benchmarks and metrics
+- [ ] Enhance user experience for deployment and customization
 ## 🛠️ Usage
 
 ### Pretraining
@@ -93,6 +102,17 @@ We extend our sincere gratitude to the following projects for their excellent wo
   - **[d1](https://github.com/dllm-reasoning/d1):** 一个专注于通过强化学习扩展扩散大语言模型推理能力的项目。
   - **[dLLM-cache](https://github.com/maomaocun/dllm-cache):** 一个用于自适应缓存加速dLLM的实现，已集成到本仓库中。
   - **[TinyLlama](https://github.com/jzhang38/TinyLlama)  [SMDM](https://github.com/ML-GSAI/SMDM):** 本项目的预训练代码参考了这些仓库，非常感谢他们的贡献。
+
+## 📖 Citation
+```
+@misc{yangyicun2025dLLMFactory,
+  title={dLLM-Factory: A Comprehensive Platform for Diffusion Large Language Models},
+  author={Yang Yicun and Cheng Shuang and Liu Dawei and Bian Yihan and Zhang Yaojie},
+  year={2025},
+  url = {https://github.com/maomaocun/dllm-Factory}
+}
+```
+
 ## 📧 Contact
 
 For any questions or collaboration inquiries, feel free to reach out at: [yangyicun187@gmail.com](mailto:yangyicun187@gmail.com)
