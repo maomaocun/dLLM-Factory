@@ -1,66 +1,63 @@
------
-
 # dLLM-Factory
 
-**dLLM-Factory** is a comprehensive project focused on Diffusion Large Language Models (dLLMs). It provides a full suite of implementation code for core modules, including Pre-training, Supervised Fine-tuning (SFT), Reinforcement Learning (RL), and Inference.
+**dLLM-Factory** is a robust and comprehensive project centered on Diffusion Large Language Models (dLLMs). It offers a complete suite of implementation code for essential modules, including Pre-training, Supervised Fine-tuning (SFT), Reinforcement Learning (RL), and Inference.
 
-[](https://www.star-history.com/#maomaocun/dLLM-Factorye&Timeline)
-
------
+---
 
 ## 📖 Project Introduction
 
-This project is designed to offer researchers and developers an efficient and user-friendly platform for dLLM training and inference. It supports the entire workflow, from data preprocessing and model training to inference and deployment. The project features a clear and organized structure, making it easy for users to undertake secondary development and customization.
+This project aims to provide researchers and developers with an efficient, user-friendly platform for training and deploying dLLMs. It encompasses the full workflow, from data preprocessing and model training to inference and deployment, featuring a well-organized structure that facilitates secondary development and customization. Support for `Dream` and `LLaDA` is already included.
 
-## ✨ 主要特性
+## ✨ Key Features
 
-- **🧠 预训练（Pretrain）：** 从零开始训练基础模型。
-  - 支持数据集：`SlimPajama`
-
-***
-
-- **🔧 有监督微调（SFT）：** 将预训练模型适配到特定任务。
-  - 支持数据集：`simplescaling-s1K`
+- **🧠 Pre-training:** Train foundational models from scratch.
+  - Supported datasets: `SlimPajama`
 
 ***
 
-- **🤖 强化学习（RL）：** 利用反馈进一步优化模型性能。
-  - 支持方法：`diff-grpo`
+- **🔧 Supervised Fine-tuning (SFT):** Adapt pre-trained models to specific tasks.
+  - Supported datasets: `simplescaling-s1K`
 
 ***
 
-- **🚀 推理（Inference）：** 高效运行已训练模型以应用于实际场景。
-  - 支持加速：`dLLM-cache`
+- **🤖 Reinforcement Learning (RL):** Optimize model performance using feedback.
+  - Supported methods: `diff-grpo`
 
 ***
 
-- **📈 Evaluation:** Comprehensive evaluation on various benchmarks.
-  | Benchmark | LLaDA Support | Dream Support |
-  | :--- | :---: | :---: |
-  | **BBH** | ✅ | ✅ |
-  | **GPQA** | ✅ | ✅ |
-  | **GSM8K** | ✅ | ✅ |
-  | **HumanEval** | ✅ | ✅ |
-  | **Long Bench** | ✅ | - |
-  | **MBPP** | ✅ | ✅ |
-  | **Minerva Math**| ✅ | ✅ |
-  | **MMLU** | ✅ | ✅ |
-  | **MMLU Pro** | ✅ | ✅ |
+- **🚀 Inference:** Efficiently run trained models for real-world applications.
+  - Supported accelerations: `dLLM-cache`
+
+***
+
+- **📈 Evaluation:** Thorough assessment across diverse benchmarks.
+  | Benchmark   | LLaDA Support | Dream Support |
+  |-------------|---------------|---------------|
+  | **BBH**     | ✅            | ✅            |
+  | **GPQA**    | ✅            | ✅            |
+  | **GSM8K**   | ✅            | ✅            |
+  | **HumanEval**| ✅            | ✅            |
+  | **Long Bench** | ✅          | -             |
+  | **MBPP**    | ✅            | ✅            |
+  | **Minerva Math** | ✅         | ✅            |
+  | **MMLU**    | ✅            | ✅            |
+  | **MMLU Pro** | ✅            | ✅            |
 
 ***
 
 ## 📝 TODO
 
-- [ ] Expand dataset support for pretraining and SFT
-- [ ] Integrate more RL algorithms and strategies
-- [ ] Add more dLLM acceleration methods (e.g., quantization, pruning, etc.)
-- [ ] Add more evaluation benchmarks and metrics
-- [ ] Enhance user experience for deployment and customization
+- [ ] Broaden dataset support for pretraining and SFT
+- [ ] Incorporate additional RL algorithms and strategies
+- [ ] Introduce more dLLM acceleration techniques (e.g., quantization, pruning, etc.)
+- [ ] Expand evaluation benchmarks and metrics
+- [ ] Improve user experience for deployment and customization
+
 ## 🛠️ Usage
 
 ### Pretraining
 
-Execute the following command to start Pretraining:
+Initiate pretraining with the following command:
 
 ```sh
 cd pretrain
@@ -69,7 +66,7 @@ bash run_pretrain.sh
 
 ### Supervised Fine-tuning (SFT)
 
-Execute the following command to start supervised fine-tuning:
+Start supervised fine-tuning with this command:
 
 ```sh
 cd sft
@@ -78,17 +75,16 @@ accelerate launch --config_file ./config/accelerate/lora_config.yaml ./sft.py
 
 ### Reinforcement Learning (RL)
 
-To begin reinforcement learning, run the provided script:
+Launch reinforcement learning using the provided script:
 
 ```sh
 cd rl
 bash examples/script/train_diffu_grpo.sh
 ```
 
+### Evaluation
 
-### Evalution
-
-Get the evaluation results by this command:
+Obtain evaluation results with this command:
 
 ```sh
 cd evaluation
@@ -97,17 +93,18 @@ bash scripts/Dream/run_Dream_bbh_base.sh
 
 ## 🙏 Acknowledgments
 
-We extend our sincere gratitude to the following projects for their excellent work. The Reinforcement Learning code in this repository is modified based on their contributions:
+We express our heartfelt thanks to the following projects for their outstanding contributions. The Reinforcement Learning code in this repository has been adapted from their work:
 
-  - **[d1](https://github.com/dllm-reasoning/d1):** 一个专注于通过强化学习扩展扩散大语言模型推理能力的项目。
-  - **[dLLM-cache](https://github.com/maomaocun/dllm-cache):** 一个用于自适应缓存加速dLLM的实现，已集成到本仓库中。
-  - **[TinyLlama](https://github.com/jzhang38/TinyLlama)  [SMDM](https://github.com/ML-GSAI/SMDM):** 本项目的预训练代码参考了这些仓库，非常感谢他们的贡献。
+- **[d1](https://github.com/dllm-reasoning/d1):** A project dedicated to enhancing dLLM reasoning capabilities through reinforcement learning.
+- **[dLLM-cache](https://github.com/maomaocun/dllm-cache):** An implementation for adaptive caching to accelerate dLLMs, now integrated into this repository.
+- **[TinyLlama](https://github.com/jzhang38/TinyLlama) [SMDM](https://github.com/ML-GSAI/SMDM):** The pretraining code in this project draws inspiration from these repositories, and we are deeply grateful for their contributions.
 
 ## 📖 Citation
+
 ```
 @misc{yangyicun2025dLLMFactory,
   title={dLLM-Factory: A Comprehensive Platform for Diffusion Large Language Models},
-  author={Yang Yicun and Cheng Shuang and Liu Dawei and Bian Yihan and Zhang Yaojie},
+  author={Yang Yicun and Cheng Shuang and Liu Dawei and Bian Yihan and Zhang Yaojie, qibiqing,zhanglinfeng},
   year={2025},
   url = {https://github.com/maomaocun/dllm-Factory}
 }
@@ -119,3 +116,4 @@ For any questions or collaboration inquiries, feel free to reach out at: [yangyi
 
 ## :star2: Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=maomaocun/dLLM-Factory&type=Timeline)](https://www.star-history.com/#maomaocun/dLLM-Factorye&Timeline)
+
