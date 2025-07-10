@@ -12,33 +12,25 @@
 
 This project is designed to offer researchers and developers an efficient and user-friendly platform for dLLM training and inference. It supports the entire workflow, from data preprocessing and model training to inference and deployment. The project features a clear and organized structure, making it easy for users to undertake secondary development and customization.
 
-## ✨ Main Features
+## ✨ 主要特性
 
-- **🧠 Pre-training (Pretrain):** Foundation model training from scratch.
-  | Category | Supported |
-  | :--- | :--- |
-  | **Dataset** | `SlimPajama` |
+- **🧠 预训练（Pretrain）：** 从零开始训练基础模型。
+  - 支持数据集：`SlimPajama`
 
 ***
 
-- **🔧 Supervised Fine-tuning (SFT):** Adapting pre-trained models to specific tasks.
-  | Category | Supported |
-  | :--- | :--- |
-  | **Dataset** | `simplescaling-s1K` |
+- **🔧 有监督微调（SFT）：** 将预训练模型适配到特定任务。
+  - 支持数据集：`simplescaling-s1K`
 
 ***
 
-- **🤖 Reinforcement Learning (RL):** Further optimizing model performance using feedback.
-  | Category | Supported |
-  | :--- | :--- |
-  | **Method** | `diff-grpo` |
+- **🤖 强化学习（RL）：** 利用反馈进一步优化模型性能。
+  - 支持方法：`diff-grpo`
 
 ***
 
-- **🚀 Inference:** Efficiently running the trained models for real-world applications.
-  | Category | Supported |
-  | :--- | :--- |
-  | **Acceleration**| `dLLM-cache` |
+- **🚀 推理（Inference）：** 高效运行已训练模型以应用于实际场景。
+  - 支持加速：`dLLM-cache`
 
 ***
 
@@ -98,9 +90,9 @@ bash scripts/Dream/run_Dream_bbh_base.sh
 
 We extend our sincere gratitude to the following projects for their excellent work. The Reinforcement Learning code in this repository is modified based on their contributions:
 
-  - **[d1](https://github.com/dllm-reasoning/d1):** A project focused on scaling reasoning in Diffusion Large Language Models via Reinforcement Learning.
-  - **[dLLM-cache](https://github.com/maomaocun/dllm-cache):** An implementation for accelerating dLLMs with adaptive caching, which has been integrated into our repository.
-
+  - **[d1](https://github.com/dllm-reasoning/d1):** 一个专注于通过强化学习扩展扩散大语言模型推理能力的项目。
+  - **[dLLM-cache](https://github.com/maomaocun/dllm-cache):** 一个用于自适应缓存加速dLLM的实现，已集成到本仓库中。
+  - **[TinyLlama](https://github.com/jzhang38/TinyLlama)  [SMDM](https://github.com/ML-GSAI/SMDM):** 本项目的预训练代码参考了这些仓库，非常感谢他们的贡献。
 ## 📧 Contact
 
 For any questions or collaboration inquiries, feel free to reach out at: [yangyicun187@gmail.com](mailto:yangyicun187@gmail.com)
