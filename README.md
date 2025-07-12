@@ -104,7 +104,7 @@ We express our heartfelt thanks to the following projects for their outstanding 
 ```
 @misc{yangyicun2025dLLMFactory,
   title={dLLM-Factory: A Comprehensive Platform for Diffusion Large Language Models},
-  author={Yang Yicun and Cheng Shuang and Liu Dawei and Bian Yihan and Zhang Yaojie, qibiqing,zhanglinfeng},
+  author={Yicun Yang and Shuang Cheng and Dawei Liu and Yihan Bian and Yaojie Zhang and Biqing Qi and Linfeng Zhang},
   year={2025},
   url = {https://github.com/maomaocun/dllm-Factory}
 }
